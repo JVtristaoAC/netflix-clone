@@ -21,11 +21,7 @@ const basicFecth = async (endpoint) => {
 export default {
     getHomeList: async() => {
         return[
-            {
-                slug: 'originals',
-                title: 'Netflix Originals',
-                items: await basicFecth(`/discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`)
-            },
+            
             {
                 slug: 'trending',
                 title: 'Trending',
@@ -63,6 +59,14 @@ export default {
             },
         ];
     },
+    
+    getListOriginals: async () =>{
+        return [{
+            slug: 'originals',
+            items: await basicFecth(`/discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`)
+        }];
+    },
+
     getMovieInfo: async (movieId, type) => {
         let info = {};
         if(movieId){
